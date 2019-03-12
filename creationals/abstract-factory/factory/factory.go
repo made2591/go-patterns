@@ -10,17 +10,32 @@ type Factory interface {
 	NewLicense() license.License
 }
 
-type factory struct {
+type carFactory struct {
 }
 
-func NewFactory() Factory {
-	return &factory{}
+func NewCarFactory() Factory {
+	return &carFactory{}
 }
 
-func (f *factory) NewVehicle() vehicle.Vehicle {
-	return vehicle.New()
+func (f *carFactory) NewVehicle() vehicle.Vehicle {
+	return vehicle.NewCar()
 }
 
-func (f *factory) NewLicense() license.License {
-	return license.New()
+func (f *carFactory) NewLicense() license.License {
+	return license.NewCar()
+}
+
+type busFactory struct {
+}
+
+func NewBusFactory() Factory {
+	return &busFactory{}
+}
+
+func (f *busFactory) NewVehicle() vehicle.Vehicle {
+	return vehicle.NewBus()
+}
+
+func (f *busFactory) NewLicense() license.License {
+	return license.NewBus()
 }

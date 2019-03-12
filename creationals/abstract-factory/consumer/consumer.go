@@ -27,8 +27,3 @@ func (c *consumer) GetVehicle() vehicle.Vehicle {
 func (c *consumer) GetLicense() license.License {
 	return c.license
 }
-
-func main() {
-	c := NewConsumer(factory.NewFactory())
-	c.GetLicense().GetType()
-}

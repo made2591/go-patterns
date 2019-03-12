@@ -1,22 +1,37 @@
 package vehicle
 
+const (
+	vehicleCarType = "car"
+	vehicleBusType = "bus"
+)
+
 type Vehicle interface {
+	GetType() interface{}
 	GetModel() interface{}
 	SetModel(m interface{})
 }
 
-type car struct {
+type vehicle struct {
+	tipe  interface{}
 	model interface{}
 }
 
-func New() Vehicle {
-	return &car{}
+func NewCar() Vehicle {
+	return &vehicle{tipe: vehicleCarType}
 }
 
-func (c *car) GetModel() interface{} {
-	return c.model
+func NewBus() Vehicle {
+	return &vehicle{tipe: vehicleBusType}
 }
 
-func (c *car) SetModel(m interface{}) {
-	c.model = m
+func (v *vehicle) GetType() interface{} {
+	return v.tipe
+}
+
+func (v *vehicle) GetModel() interface{} {
+	return v.model
+}
+
+func (v *vehicle) SetModel(m interface{}) {
+	v.tipe = m
 }

@@ -1,22 +1,26 @@
 package license
 
+const (
+	licenseCarType = "car"
+	licenseBusType = "bus"
+)
+
 type License interface {
 	GetType() interface{}
-	SetType(t interface{})
 }
 
-type b struct {
+type license struct {
 	tipe interface{}
 }
 
-func New() License {
-	return &b{}
+func NewCar() License {
+	return &license{tipe: licenseCarType}
 }
 
-func (l *b) SetType(t interface{}) {
-	l.tipe = t
+func NewBus() License {
+	return &license{tipe: licenseBusType}
 }
 
-func (l *b) GetType() interface{} {
-	return l.tipe
+func (v *license) GetType() interface{} {
+	return v.tipe
 }
