@@ -3,8 +3,6 @@ package license
 import (
 	"strings"
 	"testing"
-
-	"github.com/made2591/go-patterns/creationals/abstract-factory/vehicle"
 )
 
 func TestNewCar(t *testing.T) {
@@ -32,15 +30,15 @@ func TestGetType(t *testing.T) {
 	car := NewCar()
 	carTipe := car.GetType().(string)
 
-	if strings.Compare(carTipe, vehicle.VehicleCarType) != 0 {
-		t.Errorf("GetType was() incorrect, got %s, wanted %s", carTipe, vehicle.VehicleCarType)
+	if strings.Compare(carTipe, LicenseCarType) != 0 {
+		t.Errorf("GetType was() incorrect, got %s, wanted %s", carTipe, LicenseCarType)
 	}
 
 	bus := NewBus()
 	busTipe := bus.GetType().(string)
 
-	if strings.Compare(busTipe, vehicle.VehicleBusType) != 0 {
-		t.Errorf("GetType was() incorrect, got %s, wanted %s", busTipe, vehicle.VehicleBusType)
+	if strings.Compare(busTipe, LicenseBusType) != 0 {
+		t.Errorf("GetType was() incorrect, got %s, wanted %s", busTipe, LicenseBusType)
 	}
 
 }

@@ -51,7 +51,7 @@ func TestNewVehicle(t *testing.T) {
 func TestNewLicense(t *testing.T) {
 
 	factoryCar := NewCarFactory()
-	carVehicle := factoryCar.NewVehicle()
+	carVehicle := factoryCar.NewLicense()
 	licenseTipe := carVehicle.GetType().(string)
 
 	if strings.Compare(licenseTipe, license.LicenseCarType) != 0 {
