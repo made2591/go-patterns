@@ -1,11 +1,85 @@
-# go-patterns
-
+# Go-patterns
 This repo contains implementation of the GoF patterns in GoLang.
-- [go-patterns](#go-patterns)
+
+- [Go-patterns](#go-patterns)
   - [Creationals](#creationals)
     - [Abstract Factory](#abstract-factory)
       - [Example](#example)
       - [Implementation](#implementation)
+    - [Builder](#builder)
+      - [Example](#example-1)
+      - [Implementation](#implementation-1)
+    - [Factory](#factory)
+      - [Example](#example-2)
+      - [Implementation](#implementation-2)
+    - [Prototype](#prototype)
+      - [Example](#example-3)
+      - [Implementation](#implementation-3)
+    - [Singleton](#singleton)
+      - [Example](#example-4)
+      - [Implementation](#implementation-4)
+  - [Structurals](#structurals)
+    - [Adapter](#adapter)
+      - [Example](#example-5)
+      - [Implementation](#implementation-5)
+    - [Bridge](#bridge)
+      - [Example](#example-6)
+      - [Implementation](#implementation-6)
+    - [Composite](#composite)
+      - [Example](#example-7)
+      - [Implementation](#implementation-7)
+    - [Decorator](#decorator)
+      - [Example](#example-8)
+      - [Implementation](#implementation-8)
+    - [Decorator](#decorator-1)
+      - [Example](#example-9)
+      - [Implementation](#implementation-9)
+    - [Facade](#facade)
+      - [Example](#example-10)
+      - [Implementation](#implementation-10)
+    - [Flyweight](#flyweight)
+      - [Example](#example-11)
+      - [Implementation](#implementation-11)
+    - [Proxy](#proxy)
+      - [Example](#example-12)
+      - [Implementation](#implementation-12)
+  - [Behaviourals](#behaviourals)
+    - [Chain of Responsibility](#chain-of-responsibility)
+      - [Example](#example-13)
+      - [Implementation](#implementation-13)
+    - [Chain of Responsibility](#chain-of-responsibility-1)
+      - [Example](#example-14)
+      - [Implementation](#implementation-14)
+    - [Command](#command)
+      - [Example](#example-15)
+      - [Implementation](#implementation-15)
+    - [Interpreter](#interpreter)
+      - [Example](#example-16)
+      - [Implementation](#implementation-16)
+    - [Iterator](#iterator)
+      - [Example](#example-17)
+      - [Implementation](#implementation-17)
+    - [Mediator](#mediator)
+      - [Example](#example-18)
+      - [Implementation](#implementation-18)
+    - [Memento](#memento)
+      - [Example](#example-19)
+      - [Implementation](#implementation-19)
+    - [Observer](#observer)
+      - [Example](#example-20)
+      - [Implementation](#implementation-20)
+    - [State](#state)
+      - [Example](#example-21)
+      - [Implementation](#implementation-21)
+    - [Strategy](#strategy)
+      - [Example](#example-22)
+      - [Implementation](#implementation-22)
+    - [Template Method](#template-method)
+      - [Example](#example-23)
+      - [Implementation](#implementation-23)
+    - [Visitor](#visitor)
+      - [Example](#example-24)
+      - [Implementation](#implementation-24)
 
 ## Creationals
 Creational patterns provide ways to instantiate single objects or groups of related objects. There are five such patterns.
@@ -41,3 +115,225 @@ To run the tests, at the same folder level run:
 ```
 go test -v ./...
 ```
+
+### Builder
+TODO
+
+#### Example
+TODO
+
+#### Implementation
+TODO
+
+### Factory
+TODO
+
+#### Example
+TODO
+
+#### Implementation
+TODO
+
+### Prototype
+TODO
+
+#### Example
+TODO
+
+#### Implementation
+TODO
+
+### Singleton
+TODO
+
+#### Example
+TODO
+
+#### Implementation
+TODO
+
+## Structurals
+TODO
+
+### Adapter
+TODO
+
+#### Example
+TODO
+
+#### Implementation
+TODO
+
+### Bridge
+TODO
+
+#### Example
+TODO
+
+#### Implementation
+TODO
+
+### Composite
+TODO
+
+#### Example
+TODO
+
+#### Implementation
+TODO
+
+### Decorator
+TODO
+
+#### Example
+TODO
+
+#### Implementation
+TODO
+
+### Decorator
+TODO
+
+#### Example
+TODO
+
+#### Implementation
+TODO
+
+### Facade
+TODO
+
+#### Example
+TODO
+
+#### Implementation
+TODO
+
+### Flyweight
+TODO
+
+#### Example
+TODO
+
+#### Implementation
+TODO
+
+### Proxy
+TODO
+
+#### Example
+TODO
+
+#### Implementation
+TODO
+
+## Behaviourals
+Todo
+
+### Chain of Responsibility
+TODO
+
+#### Example
+TODO
+
+#### Implementation
+TODO
+
+### Chain of Responsibility
+TODO
+
+#### Example
+TODO
+
+#### Implementation
+TODO
+
+### Command
+TODO
+
+#### Example
+TODO
+
+#### Implementation
+TODO
+
+### Interpreter
+TODO
+
+#### Example
+TODO
+
+#### Implementation
+TODO
+
+### Iterator
+TODO
+
+#### Example
+TODO
+
+#### Implementation
+TODO
+
+### Mediator
+TODO
+
+#### Example
+TODO
+
+#### Implementation
+TODO
+
+### Memento
+TODO
+
+#### Example
+TODO
+
+#### Implementation
+TODO
+
+### Observer
+TODO
+
+#### Example
+TODO
+
+#### Implementation
+TODO
+
+### State
+TODO
+
+#### Example
+TODO
+
+#### Implementation
+TODO
+
+### Strategy
+TODO
+
+#### Example
+TODO
+
+#### Implementation
+TODO
+
+### Template Method
+TODO
+
+#### Example
+TODO
+
+#### Implementation
+TODO
+
+### Visitor
+TODO
+
+#### Example
+TODO
+
+#### Implementation
+TODO
