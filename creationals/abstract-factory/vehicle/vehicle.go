@@ -1,8 +1,9 @@
 package vehicle
 
 const (
-	vehicleCarType = "car"
-	vehicleBusType = "bus"
+	VehicleCarType = "car"
+	VehicleBusType = "bus"
+	VehicleNDModel = "MODEL_NOT_DEFINED"
 )
 
 type Vehicle interface {
@@ -17,11 +18,11 @@ type vehicle struct {
 }
 
 func NewCar() Vehicle {
-	return &vehicle{tipe: vehicleCarType}
+	return &vehicle{tipe: VehicleCarType, model: VehicleNDModel}
 }
 
 func NewBus() Vehicle {
-	return &vehicle{tipe: vehicleBusType}
+	return &vehicle{tipe: VehicleBusType, model: VehicleNDModel}
 }
 
 func (v *vehicle) GetType() interface{} {
@@ -33,5 +34,5 @@ func (v *vehicle) GetModel() interface{} {
 }
 
 func (v *vehicle) SetModel(m interface{}) {
-	v.tipe = m
+	v.model = m
 }
