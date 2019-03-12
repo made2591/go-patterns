@@ -1,8 +1,8 @@
 package license
 
 const (
-	LicenseCarType = "car"
-	LicenseBusType = "bus"
+	LicenseCarType = "B"
+	LicenseBusType = "C"
 )
 
 type License interface {
