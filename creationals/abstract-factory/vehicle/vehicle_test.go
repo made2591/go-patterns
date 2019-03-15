@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestNewCar(t *testing.T) {
+func TestNewCarVehicle(t *testing.T) {
 
 	car := NewCarVehicle()
 
@@ -15,7 +15,7 @@ func TestNewCar(t *testing.T) {
 
 }
 
-func TestNewBus(t *testing.T) {
+func TestNewBusVehicle(t *testing.T) {
 
 	bus := NewBusVehicle()
 
