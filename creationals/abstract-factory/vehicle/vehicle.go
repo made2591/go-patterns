@@ -7,9 +7,9 @@ const (
 )
 
 type Vehicle interface {
-	GetType() interface{}
-	GetModel() interface{}
-	SetModel(m interface{})
+	GetTypeVehicle() interface{}
+	GetModelVehicle() interface{}
+	SetModelVehicle(m interface{})
 }
 
 type vehicle struct {
@@ -17,22 +17,22 @@ type vehicle struct {
 	model interface{}
 }
 
-func NewCar() Vehicle {
+func NewCarVehicle() Vehicle {
 	return &vehicle{tipe: VehicleCarType, model: VehicleNDModel}
 }
 
-func NewBus() Vehicle {
+func NewBusVehicle() Vehicle {
 	return &vehicle{tipe: VehicleBusType, model: VehicleNDModel}
 }
 
-func (v *vehicle) GetType() interface{} {
+func (v *vehicle) GetTypeVehicle() interface{} {
 	return v.tipe
 }
 
-func (v *vehicle) GetModel() interface{} {
+func (v *vehicle) GetModelVehicle() interface{} {
 	return v.model
 }
 
-func (v *vehicle) SetModel(m interface{}) {
+func (v *vehicle) SetModelVehicle(m interface{}) {
 	v.model = m
 }

@@ -6,21 +6,21 @@ const (
 )
 
 type License interface {
-	GetType() interface{}
+	GetTypeLicense() interface{}
 }
 
 type license struct {
 	tipe interface{}
 }
 
-func NewCar() License {
+func NewCarLicense() License {
 	return &license{tipe: LicenseCarType}
 }
 
-func NewBus() License {
+func NewBusLicense() License {
 	return &license{tipe: LicenseBusType}
 }
 
-func (v *license) GetType() interface{} {
+func (v *license) GetTypeLicense() interface{} {
 	return v.tipe
 }

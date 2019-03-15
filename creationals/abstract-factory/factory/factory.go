@@ -18,11 +18,11 @@ func NewCarFactory() Factory {
 }
 
 func (f *carFactory) NewVehicle() vehicle.Vehicle {
-	return vehicle.NewCar()
+	return vehicle.NewCarVehicle()
 }
 
 func (f *carFactory) NewLicense() license.License {
-	return license.NewCar()
+	return license.NewCarLicense()
 }
 
 type busFactory struct {
@@ -33,9 +33,9 @@ func NewBusFactory() Factory {
 }
 
 func (f *busFactory) NewVehicle() vehicle.Vehicle {
-	return vehicle.NewBus()
+	return vehicle.NewBusVehicle()
 }
 
 func (f *busFactory) NewLicense() license.License {
-	return license.NewBus()
+	return license.NewBusLicense()
 }

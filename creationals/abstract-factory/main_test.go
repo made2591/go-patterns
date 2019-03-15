@@ -9,10 +9,17 @@ import (
 
 func TestMain(t *testing.T) {
 
-	f := factory.NewCarFactory()
-	c := consumer.NewConsumer(f)
+	fc := factory.NewCarFactory()
+	c := consumer.NewConsumer(fc)
 
-	if f == nil || c == nil {
+	if fc == nil || c == nil {
+		t.Errorf("Main was incorrect, got: nil")
+	}
+
+	fb := factory.NewBusFactory()
+	b := consumer.NewConsumer(fb)
+
+	if fb == nil || b == nil {
 		t.Errorf("Main was incorrect, got: nil")
 	}
 

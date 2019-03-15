@@ -9,7 +9,7 @@ import (
 
 func main() {
 	c := consumer.NewConsumer(factory.NewCarFactory())
-	fmt.Println(c.GetLicense().GetType())
+	fmt.Println(c.GetLicense().GetTypeLicense())
 	c = consumer.NewConsumer(factory.NewBusFactory())
-	fmt.Println(c.GetLicense().GetType())
+	fmt.Println(c.GetLicense().GetTypeLicense())
 }

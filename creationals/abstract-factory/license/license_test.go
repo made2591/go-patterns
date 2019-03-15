@@ -5,40 +5,40 @@ import (
 	"testing"
 )
 
-func TestNewCar(t *testing.T) {
+func TestNewCarLicense(t *testing.T) {
 
-	car := NewCar()
+	car := NewCarLicense()
 
 	if car == nil {
-		t.Errorf("NewCar was() incorrect, got: nil")
+		t.Errorf("NewCarLicense was incorrect, got: nil")
 	}
 
 }
 
-func TestNewBus(t *testing.T) {
+func TestNewBusLicense(t *testing.T) {
 
-	car := NewCar()
+	bus := NewBusLicense()
 
-	if car == nil {
-		t.Errorf("NewCar was() incorrect, got: nil")
+	if bus == nil {
+		t.Errorf("NewBusLicense was incorrect, got: nil")
 	}
 
 }
 
 func TestGetType(t *testing.T) {
 
-	car := NewCar()
-	carTipe := car.GetType().(string)
+	car := NewCarLicense()
+	carTipe := car.GetTypeLicense().(string)
 
 	if strings.Compare(carTipe, LicenseCarType) != 0 {
-		t.Errorf("GetType was() incorrect, got %s, wanted %s", carTipe, LicenseCarType)
+		t.Errorf("GetTypeLicense was incorrect, got %s, wanted %s", carTipe, LicenseCarType)
 	}
 
-	bus := NewBus()
-	busTipe := bus.GetType().(string)
+	bus := NewBusLicense()
+	busTipe := bus.GetTypeLicense().(string)
 
 	if strings.Compare(busTipe, LicenseBusType) != 0 {
-		t.Errorf("GetType was() incorrect, got %s, wanted %s", busTipe, LicenseBusType)
+		t.Errorf("GetTypeLicense was incorrect, got %s, wanted %s", busTipe, LicenseBusType)
 	}
 
 }
