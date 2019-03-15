@@ -25,43 +25,43 @@ func TestNewBus(t *testing.T) {
 
 }
 
-func TestGetType(t *testing.T) {
+func TestGetTypeVehicle(t *testing.T) {
 
 	car := NewCarVehicle()
 	carTipe := car.GetTypeVehicle().(string)
 
 	if strings.Compare(carTipe, VehicleCarType) != 0 {
-		t.Errorf("GetType was incorrect, got %s, wanted %s", carTipe, VehicleCarType)
+		t.Errorf("GetTypeVehicle was incorrect, got %s, wanted %s", carTipe, VehicleCarType)
 	}
 
 	bus := NewBusVehicle()
 	busTipe := bus.GetTypeVehicle().(string)
 
 	if strings.Compare(busTipe, VehicleBusType) != 0 {
-		t.Errorf("GetType was incorrect, got %s, wanted %s", busTipe, VehicleBusType)
+		t.Errorf("GetTypeVehicle was incorrect, got %s, wanted %s", busTipe, VehicleBusType)
 	}
 
 }
 
-func TestGetModel(t *testing.T) {
+func TestGetModelVehicle(t *testing.T) {
 
 	car := NewCarVehicle()
 	carModel := car.GetModelVehicle().(string)
 
 	if strings.Compare(carModel, VehicleNDModel) != 0 {
-		t.Errorf("GetModel was incorrect, got %s, wanted %s", carModel, VehicleNDModel)
+		t.Errorf("GetModelVehicle was incorrect, got %s, wanted %s", carModel, VehicleNDModel)
 	}
 
 	bus := NewBusVehicle()
 	busModel := bus.GetModelVehicle().(string)
 
 	if strings.Compare(busModel, VehicleNDModel) != 0 {
-		t.Errorf("GetModel was incorrect, got %s, wanted %s", busModel, VehicleNDModel)
+		t.Errorf("GetModelVehicle was incorrect, got %s, wanted %s", busModel, VehicleNDModel)
 	}
 
 }
 
-func TestSetModel(t *testing.T) {
+func TestSetModelVehicle(t *testing.T) {
 
 	car := NewCarVehicle()
 	car.SetModelVehicle("Punto")

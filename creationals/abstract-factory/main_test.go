@@ -7,7 +7,7 @@ import (
 	"github.com/made2591/go-patterns/creationals/abstract-factory/factory"
 )
 
-func TestMain(t *testing.T) {
+func Testmain(t *testing.T) {
 
 	fc := factory.NewCarFactory()
 	c := consumer.NewConsumer(fc)
