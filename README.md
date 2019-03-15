@@ -1,6 +1,11 @@
 # Go-patterns
 This repo contains implementation of the GoF patterns in GoLang.
 
+[![Build Status](https://travis-ci.org/made2591/go-patterns.svg?branch=master)](https://travis-ci.org/made2591/go-patterns)
+[![codebeat badge](https://codebeat.co/badges/53c8e4e9-5bed-485f-9a18-570bce089e1b)](https://codebeat.co/projects/github-com-made2591-go-patterns-master)
+[![Coverage Status](https://coveralls.io/repos/github/made2591/go-patterns/badge.svg?branch=master)](https://coveralls.io/github/made2591/go-patterns?branch=master)
+[![License](https://img.shields.io/github/license/made2591/go-patterns.svg)](https://opensource.org/licenses/MIT)
+
 - [Go-patterns](#go-patterns)
   - [Creationals](#creationals)
     - [Abstract Factory](#abstract-factory)
