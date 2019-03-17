@@ -1,7 +1,6 @@
 package bmw
 
 import (
-	"errors"
 	"fmt"
 
 	"github.com/made2591/go-patterns/creationals/factory/factory"
@@ -22,6 +21,6 @@ func (f *bmwFactory) CreateVehicle(tipe uint) (vehicle.Vehicle, error) {
 	case 2:
 		return createBMWSerieTwo(), nil
 	default:
-		return nil, errors.New(fmt.Sprintf("BMW tipe %d not supported", tipe))
+		return nil, fmt.Errorf(fmt.Sprintf("BMW tipe %d not supported", tipe))
 	}
 }

@@ -178,7 +178,9 @@ go test -v ./...
 ```
 
 ### Prototype
-TODO
+The `prototype pattern` is used to instantiate a class by copying, or cloning, the properties of an existing object. The new object is an exact copy of the prototype but permits modification without altering the original. This practise is particularly useful when the construction of a brand new object, using the new operator, is inefficient.
+
+When an object is cloned the new object is either a *shallow* or *deep copy*. A shallow copy duplicates all of the object's properties. If any property contains a reference type, the reference is copied. This means that changes to the referenced object are visible in both the clone and the original object. A deep copy clones the main object and all child objects. Any properties of reference types are also cloned, giving a truly independent copy. The prototype pattern usually generates deep copies, though this is dependant upon the situation.
 
 #### Example
 TODO

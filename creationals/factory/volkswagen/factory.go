@@ -1,7 +1,6 @@
 package volkswagen
 
 import (
-	"errors"
 	"fmt"
 
 	"github.com/made2591/go-patterns/creationals/factory/factory"
@@ -22,6 +21,6 @@ func (f *volkswagenFactory) CreateVehicle(tipe uint) (vehicle.Vehicle, error) {
 	case 2:
 		return createVolkswagenGolf(), nil
 	default:
-		return nil, errors.New(fmt.Sprintf("Volkswagen tipe %d not supported", tipe))
+		return nil, fmt.Errorf(fmt.Sprintf("Volkswagen tipe %d not supported", tipe))
 	}
 }
