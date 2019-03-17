@@ -1,5 +1,7 @@
 package vehicle
 
+import "fmt"
+
 const (
 	VehicleStandardWheel         = "standard wheel"
 	VehicleStandardSteeringWheel = "standard steering wheel"
@@ -20,6 +22,7 @@ type Vehicle interface {
 	SetSteeringWheel(a interface{})
 	SetEngine(a interface{})
 	SetAirbagSystem(a interface{})
+	PrintDetails() string
 }
 
 type vehicle struct {
@@ -68,4 +71,13 @@ func (v *vehicle) SetEngine(e interface{}) {
 
 func (v *vehicle) SetAirbagSystem(as interface{}) {
 	v.airbagSystem = as
+}
+
+func (v *vehicle) PrintDetails() string {
+	return fmt.Sprintf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"+
+		"~ > Wheel: %24s\n"+
+		"~ > Stairing Wheel: %24s\n"+
+		"~ > Airbag: %25s\n"+
+		"~ > Engine: %24s\n"+
+		"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", v.wheel, v.steeringWheel, v.airbagSystem, v.engine)
 }

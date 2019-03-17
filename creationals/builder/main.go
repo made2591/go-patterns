@@ -9,15 +9,14 @@ import (
 
 func main() {
 	director := director.NewDirector()
+
 	poloBuilder := builder.NewPoloBuilder()
-	director.MakeMeal(poloBuilder)
+	director.MakeVehicle(poloBuilder)
 	poloVehicle := poloBuilder.GetVehicle()
-	fmt.Println(golfVehicle.GetWheel())
-	fmt.Println(golfVehicle.GetEngine())
+	fmt.Println(poloVehicle.PrintDetails())
 
 	golfBuilder := builder.NewGolfBuilder()
-	director.MakeMeal(golfBuilder)
+	director.MakeVehicle(golfBuilder)
 	golfVehicle := golfBuilder.GetVehicle()
-	fmt.Println(golfVehicle.GetWheel())
-	fmt.Println(golfVehicle.GetEngine())
+	fmt.Println(golfVehicle.PrintDetails())
 }

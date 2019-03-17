@@ -1,14 +1,14 @@
 package builder
 
 import (
-	"github.com/made2591/go-patterns/builder/vehicle"
+	"github.com/made2591/go-patterns/creationals/builder/vehicle"
 )
 
 type Builder interface {
 	AddWheel()
 	AddSteeringWheel()
 	AddEngine()
-	AddAirbag()
+	AddAirbagSystem()
 	GetVehicle() vehicle.Vehicle
 }
 
@@ -17,23 +17,23 @@ type poloBuilder struct {
 }
 
 func NewPoloBuilder() Builder {
-	return &poloBuilder{}
+	return &poloBuilder{polo: vehicle.NewVehicle()}
 }
 
 func (v *poloBuilder) AddWheel() {
-	v.wheel = vehicle.VehicleStandardWheel
+	v.polo.SetWheel(vehicle.VehicleStandardWheel)
 }
 
 func (v *poloBuilder) AddSteeringWheel() {
-	v.steeringWheel = vehicle.VehicleStandardSteeringWheel
+	v.polo.SetSteeringWheel(vehicle.VehicleStandardSteeringWheel)
 }
 
 func (v *poloBuilder) AddEngine() {
-	v.engine = vehicle.VehicleStandardEngine
+	v.polo.SetEngine(vehicle.VehicleStandardEngine)
 }
 
-func (v *poloBuilder) AddAirbag() {
-	v.airbagSystem = vehicle.VehicleStandardAirbagSystem
+func (v *poloBuilder) AddAirbagSystem() {
+	v.polo.SetAirbagSystem(vehicle.VehicleStandardAirbagSystem)
 }
 
 func (v *poloBuilder) GetVehicle() vehicle.Vehicle {
@@ -45,23 +45,23 @@ type golfBuilder struct {
 }
 
 func NewGolfBuilder() Builder {
-	return &golfBuilder{}
+	return &golfBuilder{golf: vehicle.NewVehicle()}
 }
 
 func (v *golfBuilder) AddWheel() {
-	v.wheel = vehicle.VehicleSpecialWheel
+	v.golf.SetWheel(vehicle.VehicleSpecialWheel)
 }
 
 func (v *golfBuilder) AddSteeringWheel() {
-	v.steeringWheel = vehicle.VehicleSpecialSteeringWheel
+	v.golf.SetSteeringWheel(vehicle.VehicleSpecialSteeringWheel)
 }
 
 func (v *golfBuilder) AddEngine() {
-	v.engine = vehicle.VehicleSpecialEngine
+	v.golf.SetEngine(vehicle.VehicleSpecialEngine)
 }
 
-func (v *golfBuilder) AddAirbag() {
-	v.airbagSystem = vehicle.VehicleSpecialAirbagSystem
+func (v *golfBuilder) AddAirbagSystem() {
+	v.golf.SetAirbagSystem(vehicle.VehicleSpecialAirbagSystem)
 }
 
 func (v *golfBuilder) GetVehicle() vehicle.Vehicle {
