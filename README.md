@@ -183,31 +183,97 @@ The `prototype pattern` is used to instantiate a class by copying, or cloning, t
 When an object is cloned the new object is either a *shallow* or *deep copy*. A shallow copy duplicates all of the object's properties. If any property contains a reference type, the reference is copied. This means that changes to the referenced object are visible in both the clone and the original object. A deep copy clones the main object and all child objects. Any properties of reference types are also cloned, giving a truly independent copy. The prototype pattern usually generates deep copies, though this is dependant upon the situation.
 
 #### Example
-TODO
+WIP
 
 #### Implementation
-TODO
+WIP
 
 ### Singleton
-TODO
+The `singleton` is used to control class instantiation. The pattern ensures that only one object of a particular class is ever created. All further references to objects of the singleton class refer to the same underlying instance.
+
+The singleton pattern is useful when a single, global point of access to a limited resource is required. It is more appropriate than creating a global variable as this may be copied, leading to multiple access points and the risk that the duplicates become out of step with the original.
+
+An example of the use of a singleton class is a logger instance. Since logging is not something that changes the behaviour of the application, creating multiple instances of the logging object is generally not required. By forcing a single, global instance to be used, only one underlying writer is created.
 
 #### Example
-TODO
+Look at the `singleton` package and level instance.
 
 #### Implementation
-TODO
+- The [logger](https://github.com/made2591/go-patterns/blob/master/creationals/singleton/logger/logger.go) package: this is an interface for the concrete logger struct that is implemented throught the use of the `sync`. The pattern used leverages the `Once` struct defined in the `sync` package: this struct simply contains a mutex:
+
+```
+// Once is an object that will perform exactly one action.
+type Once struct {
+	m    Mutex
+	done uint32
+}
+```
+
+and force a function `func()` to be executed only once thanks to the `Do(f func() {...})` method. Let's have a look at the method:
+
+```
+func (o *Once) Do(f func()) {
+	if atomic.LoadUint32(&o.done) == 1 {
+		return
+	}
+	// Slow-path.
+	o.m.Lock()
+	defer o.m.Unlock()
+	if o.done == 0 {
+		defer atomic.StoreUint32(&o.done, 1)
+		f()
+	}
+}
+```
+
+As stated in the code, this means that given `var once Once` if `once.Do(f)` is called multiple times, only the first call will invoke `f`, even if `f` has a different value in each invocation. A new instance of Once is required for each function to execute.
+
+- The [main](https://github.com/made2591/go-patterns/blob/master/creationals/singleton/main.go). In the main, we can see that it is possible to create different many logger instances, but actually always the same is returned.
+
+To the test the `factory pattern`:
+
+```
+git clone https://github.com/made2591/go-patterns/
+cd creationals/factory
+go run main.go
+```
+
+To run the tests, at the same folder level run:
+
+```
+go test -v ./...
+```
 
 ## Structurals
-TODO
+The second type of design pattern is the structural pattern. Structural patterns provide a manner to define relationships between classes or objects.
 
 ### Adapter
-TODO
+The adapter pattern is used to provide a link between two otherwise incompatible types by wrapping the "adaptee" with a class that supports the interface required by the client.
 
 #### Example
-TODO
+Imagine an application for a vehicle reseller that displays a list of vechiles. The list is intented to be provided as a CSV string - a column based comma separated string of values, with a new row for each vehicle. It may be that the internal vehicle system includes a method that permit the retrieval of the vehicle available in the catalogue, including their model type, as an array of Vehicles. The solution interact with the vehicle catalogue throught an interface that include a method to get the data, but this method is not compatible with the one provided by the internal vehicle system (in this case, because a specific format is required but it could be due to some different presentation logic behind).
+
+By following the `adapter` pattern, I created a new struct to be an adapter. This struct provide the reseller desired method (by implementing the reseller interface) and - at the same time - hold an object of the type required by the application used by the reseller. When the main application ask for the list of vehicles, this request is passed and processed by the internal vehicle system. The response from the latter will then be translated to a format that can be used by the reseller thanks to the adapter that both expose a method implemented by the interface of the reseller and keep an instance of the internal vehicle system.
 
 #### Implementation
-TODO
+- The [vehicle](https://github.com/made2591/go-patterns/blob/master/structurals/adapter/vehicle/vehicle.go) package: this is an interface to provide different vehicle recycled from the implementation given in the creationals pattern `abstrac-factory`. I only added a method called `GetAvailableVehicle()` to return the list of vehicles available. This is the dummy use case build to act as the interval vehicle system mentioned before;
+- The [reseller](https://github.com/made2591/go-patterns/blob/master/creationals/adapter/reseller/reseller.go) package: this package define an interface called `Vehicle`. The two different implementation of *different vehicle*s are defined in the [bmw](https://github.com/made2591/go-patterns/blob/master/creationals/factory/bmw/bmw.go) and [volkswagen](https://github.com/made2591/go-patterns/blob/master/creationals/factory/volkswagen/volkswagen.go) packages. The `Vehicle` interface defines a couple of methods to set and retrieve specific model type.
+- The [bmw](https://github.com/made2591/go-patterns/blob/master/creationals/factory/bmw/bmw.go)/[volkswagen](https://github.com/made2591/go-patterns/blob/master/creationals/factory/volkswagen/volkswagen.go) packages: they both contain an implementation of a specific `Vechile` and `Factory` constructor. From both these packages, the only methods that are visible from outside are the `New[Bmw/Volkswagen]Factory`, the respective `CreateVehicle` that can be called over the factory and the methods exposed by the `Vehicle` interface to respect the contract, or `GetModel`, `SetModel` and `PrintDetails`.
+- The [main](https://github.com/made2591/go-patterns/blob/master/creationals/factory/main.go). In the main we can see that it is possible to create different model of the same vehicle throught respective factory, by passing one parameter to respective `CreateVehicle` method called over the factory implementation. This parameter could have been selected by an external user at run-time. When the object's underlying type is outputted, we can see that the correct car model was selected.
+
+To the test the `factory pattern`:
+
+```
+git clone https://github.com/made2591/go-patterns/
+cd creationals/factory
+go run main.go
+```
+
+To run the tests, at the same folder level run:
+
+```
+go test -v ./...
+```
 
 ### Bridge
 TODO
