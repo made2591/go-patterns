@@ -230,11 +230,11 @@ As stated in the code, this means that given `var once Once` if `once.Do(f)` is 
 
 - The [main](https://github.com/made2591/go-patterns/blob/master/creationals/singleton/main.go). In the main, we can see that it is possible to create different many logger instances, but actually always the same is returned.
 
-To the test the `factory pattern`:
+To the test the `singleton pattern`:
 
 ```
 git clone https://github.com/made2591/go-patterns/
-cd creationals/factory
+cd creationals/singleton
 go run main.go
 ```
 
@@ -253,19 +253,20 @@ The adapter pattern is used to provide a link between two otherwise incompatible
 #### Example
 Imagine an application for a vehicle reseller that displays a list of vechiles. The list is intented to be provided as a CSV string - a column based comma separated string of values, with a new row for each vehicle. It may be that the internal vehicle system includes a method that permit the retrieval of the vehicle available in the catalogue, including their model type, as an array of Vehicles. The solution interact with the vehicle catalogue throught an interface that include a method to get the data, but this method is not compatible with the one provided by the internal vehicle system (in this case, because a specific format is required but it could be due to some different presentation logic behind).
 
-By following the `adapter` pattern, I created a new struct to be an adapter. This struct provide the reseller desired method (by implementing the reseller interface) and - at the same time - hold an object of the type required by the application used by the reseller. When the main application ask for the list of vehicles, this request is passed and processed by the internal vehicle system. The response from the latter will then be translated to a format that can be used by the reseller thanks to the adapter that both expose a method implemented by the interface of the reseller and keep an instance of the internal vehicle system.
+By following the `adapter` pattern, I created a new struct to be an adapter. This struct provide the reseller desired method (by implementing the reseller interface) and - at the same time - hold an object of the type required by the application used by the reseller. When the main application ask for the list of vehicles, this request is passed and processed by the internal vehicle system. The response from the latter will then be translated to a format that can be used by the reseller thanks to the adapter: the latter both exposes a method implemented by the interface of the reseller and keep an instance of the internal vehicle system.
 
 #### Implementation
-- The [vehicle](https://github.com/made2591/go-patterns/blob/master/structurals/adapter/vehicle/vehicle.go) package: this is an interface to provide different vehicle recycled from the implementation given in the creationals pattern `abstrac-factory`. I only added a method called `GetAvailableVehicle()` to return the list of vehicles available. This is the dummy use case build to act as the interval vehicle system mentioned before;
-- The [reseller](https://github.com/made2591/go-patterns/blob/master/creationals/adapter/reseller/reseller.go) package: this package define an interface called `Vehicle`. The two different implementation of *different vehicle*s are defined in the [bmw](https://github.com/made2591/go-patterns/blob/master/creationals/factory/bmw/bmw.go) and [volkswagen](https://github.com/made2591/go-patterns/blob/master/creationals/factory/volkswagen/volkswagen.go) packages. The `Vehicle` interface defines a couple of methods to set and retrieve specific model type.
-- The [bmw](https://github.com/made2591/go-patterns/blob/master/creationals/factory/bmw/bmw.go)/[volkswagen](https://github.com/made2591/go-patterns/blob/master/creationals/factory/volkswagen/volkswagen.go) packages: they both contain an implementation of a specific `Vechile` and `Factory` constructor. From both these packages, the only methods that are visible from outside are the `New[Bmw/Volkswagen]Factory`, the respective `CreateVehicle` that can be called over the factory and the methods exposed by the `Vehicle` interface to respect the contract, or `GetModel`, `SetModel` and `PrintDetails`.
-- The [main](https://github.com/made2591/go-patterns/blob/master/creationals/factory/main.go). In the main we can see that it is possible to create different model of the same vehicle throught respective factory, by passing one parameter to respective `CreateVehicle` method called over the factory implementation. This parameter could have been selected by an external user at run-time. When the object's underlying type is outputted, we can see that the correct car model was selected.
+- The [vehicle](https://github.com/made2591/go-patterns/blob/master/structurals/adapter/vehicle/vehicle.go) package: this is an interface to provide different vehicle recycled from the implementation given in the creationals pattern `abstrac-factory`. I only added a method called `GetAvailableVehicle()` to return the list of vehicles available. Thus, this package play the role of the internal vehicle system This is the dummy use case build to act as the interval vehicle system mentioned before;
+- The [reseller](https://github.com/made2591/go-patterns/blob/master/structurals/adapter/reseller/reseller.go) package: this is the interface implemented by the adapter that will expose the method expected by the client
+- The [adapter](https://github.com/made2591/go-patterns/blob/master/structurals/adapter/adapater/adapater.go) package: this package provides the adapter that will handle the internal vehicle system properly and translate the requests in the desidered format transparently, by keeping internal system.
+- The [main](https://github.com/made2591/go-patterns/blob/master/structurals/adapter/main.go) package: it represents the console application. As you can see, we first create a `InternalVehicleSystem` object. We then create a new `Adapter` that holds a reference to the `InternalVehicleSystem` object. Finally, we can instantiate the `Reseller` object, passing the adapter to use as its source of vehicles list information. The call to `GetAvailableVehicles()` is intercepted by the `Adapter` so that the data can be retrieved from the incompatible `InternalVehicleSystem` object and correctly formatted for output.
 
-To the test the `factory pattern`:
+
+To the test the `adapter pattern`:
 
 ```
 git clone https://github.com/made2591/go-patterns/
-cd creationals/factory
+cd structurals/adapter
 go run main.go
 ```
 

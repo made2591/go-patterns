@@ -38,7 +38,7 @@ func (v *vehicle) SetModelVehicle(m interface{}) {
 }
 
 type InternalVehicleSystem interface {
-	GetAvailableVehicle() []Vehicle
+	GetAvailableVehicles() []Vehicle
 }
 
 type internalVehicleSystem struct{}
@@ -47,12 +47,14 @@ func NewInternalVehicleSystem() InternalVehicleSystem {
 	return &internalVehicleSystem{}
 }
 
-func (ivs *internalVehicleSystem) GetAvailableVehicle() []Vehicle {
+func (ivs *internalVehicleSystem) GetAvailableVehicles() []Vehicle {
 
 	vs := make([]Vehicle, 2)
 
 	vs[0] = NewCarVehicle()
+	vs[0].SetModelVehicle("Golf")
 	vs[1] = NewBusVehicle()
+	vs[1].SetModelVehicle("Iveco")
 
 	return vs
 
