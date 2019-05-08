@@ -248,7 +248,7 @@ go test -v ./...
 The second type of design pattern is the structural pattern. Structural patterns provide a manner to define relationships between classes or objects.
 
 ### Adapter
-The adapter pattern is used to provide a link between two otherwise incompatible types by wrapping the "adaptee" with a class that supports the interface required by the client.
+The `adapter pattern` is used to provide a link between two otherwise incompatible types by wrapping the "adaptee" with a class that supports the interface required by the client.
 
 #### Example
 Imagine an application for a vehicle reseller that displays a list of vechiles. The list is intented to be provided as a CSV string - a column based comma separated string of values, with a new row for each vehicle. It may be that the internal vehicle system includes a method that permit the retrieval of the vehicle available in the catalogue, including their model type, as an array of Vehicles. The solution interact with the vehicle catalogue throught an interface that include a method to get the data, but this method is not compatible with the one provided by the internal vehicle system (in this case, because a specific format is required but it could be due to some different presentation logic behind).
@@ -277,13 +277,31 @@ go test -v ./...
 ```
 
 ### Bridge
-TODO
+The `bridge pattern` is a a structural pattern as it defines a manner for creating relationships between classes. The pattern is used to separate the abstract elements of a class from the implementation details. For example, the abstract elements may contain logic depending on a specific operating system. If we imagine a software to dispatch installer utilities, someone would be able to create it without any knowledge of the implementation details of interoperability with the operating system. The pattern provides the means to replace the implementation details without modifying the abstraction. This permits, for example, changing operating systems, or databases, etc. with no impact to the logic of setup.
 
 #### Example
-TODO
+In the example build, there's the need to provide a generic installer utility to accomplish some setup steps across multiple platform to which the software managed has to been distributed. An interface that represents the installer could or could not include some properties to hold the details of the installation process. Several struct that implements this interface could then be included to permit the complention of the steps required depending on the operating system. The implementation of the setup to be used could then be selected according to the underlying architecture automatically - here, is simulated throught manual imposition.
 
 #### Implementation
-TODO
+- The [abstractsystems](https://github.com/made2591/go-patterns/blob/master/structurals/bridge/abstractsystems/system.go) package: this represents the interface base for the implementation of different setup method. This interface defines a single method signature that will be used to launch a setup. The method accept a parameter just as an example;
+- The [systems](https://github.com/made2591/go-patterns/blob/master/structurals/bridge/systems/systems.go) package: this represents two initial concrete setup implementations for two different systems. As we are using the bridge pattern, further system implementations could be added as required in the future.
+- The [abstractinstaller](https://github.com/made2591/go-patterns/blob/master/structurals/bridge/abstractinstaller/installer.go) package: this package describes an installer with the required parameter (dummy, for example). The installe holds also a reference to an implementation object - an abstract systems. Furthermore, **the installer includes also a `Setup` method that calls the `Installer` method of the referenced `System` implementation**.
+- The [main](https://github.com/made2591/go-patterns/blob/master/structurals/bridge/main.go) package: it represents the software that pack the install steps. The main code creates an installer and launch the setup using each type of system setups.
+
+
+To the test the `bridge pattern`:
+
+```
+git clone https://github.com/made2591/go-patterns/
+cd structurals/bridge
+go run main.go
+```
+
+To run the tests, at the same folder level run:
+
+```
+go test -v ./...
+```
 
 ### Composite
 TODO
